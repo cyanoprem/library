@@ -18,4 +18,10 @@
 #header {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  max-height: 180px;
+}
+
+li {
+  max-width: 750px;
+  min-width: 350px;
 }
