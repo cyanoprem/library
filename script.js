@@ -16,33 +16,37 @@ const books = document.getElementById('books')
 
 for (let i = 0; i < myLibrary.length; i++) {
   let book = document.createElement('li')
-  book.innerHTML = myLibrary[i].title
+  book.innerHTML = `Title: ${myLibrary[i].title}, Author: ${myLibrary[i].author}, No of Pages: ${myLibrary[i].pages}, Read: ${myLibrary[i].read}`
   books.appendChild(book)
+  let deleteButton = document.createElement("button")
+  deleteButton.appendChild(document.createTextNode("delete"))
+  book.appendChild(deleteButton)
+  deleteButton.onclick = function() {
+    this.parentElement.style.display = "none";
+  }
 }
 
-// try {
-//   function addBookToLibrary(books, inputBook) {
-//     console.log(inputBook.value);
-//     let newBook = document.createElement('li')
-//     newBook.innerHTML = inputBook.value
-//     books.appendChild(newBook)
-//     return false 
-//   }
-// } catch (error) {
-//   console.log(error)
-// }
+let newBook = document.getElementById('new-book');
+let author = document.getElementById('author');
+let pages = document.getElementById('pages');
+let read = document.getElementById('read');
 
 
-var nameInput = document.getElementById('name');
-
-document.querySelector('form.pure-form').addEventListener('submit', function (e) {
+document.querySelector('form.new-book-form').addEventListener('submit', function (e) {
 
     //prevent the normal submission of the form
     e.preventDefault();
-
-    console.log(nameInput.value);  
     
     let book = document.createElement('li')
-    book.innerHTML = nameInput.value
+    let newBookObject = new Book(newBook.value, author.value, parseInt(pages.value), read.value)
+    myLibrary.push(newBookObject)
+    book.innerHTML = `Title: ${newBook.value}, Author: ${author.value}, No of Pages: ${parseInt(pages.value)}, Read: ${read.value}`
     books.appendChild(book)
-});
+    let deleteButton = document.createElement("button")
+    deleteButton.appendChild(document.createTextNode("delete"))
+    book.appendChild(deleteButton)
+    deleteButton.onclick = function() {
+      this.parentElement.style.display = "none";
+    }
+    document.querySelector('.new-book-form').reset()    
+})
