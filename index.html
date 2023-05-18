@@ -25,13 +25,51 @@
   
     <div class="modal-content">
       <div class="box">
-        <p>Add New Book</p>
+        <p class="is-size-5 has-text-link mb-1">Add New Book</p>
         <form class="new-book-form">
-          <input id="new-book" type="text" placeholder="Enter New Book" />
-          <input id="author" type="text" placeholder="Enter Author Name" />
-          <input id="pages" type="text" placeholder="Enter No of Pages" />
-          <input id="read" type="text" placeholder="Did you read the book?" />
-          <button class="submitBookBtn" type="submit">Submit</button>
+
+          <!-- <input id="new-book" class="input" type="text" placeholder="Enter Book Name" /> -->
+          <!-- <input id="author" class="input" type="text" placeholder="Enter Author Name" /> -->
+          <!-- <input id="pages" class="input" type="text" placeholder="Enter No of Pages" /> -->
+
+           <div class="field">
+            <label class="label">Book Name</label>
+            <div class="control">
+              <input id="new-book" class="input" type="text" placeholder="Enter Book Name" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Author Name</label>
+            <div class="control">
+              <input id="author" class="input" type="text" placeholder="Enter Author Name" />
+            </div>
+          </div>
+
+          
+          <div class="field">
+            <label class="label">No of Pages</label>
+            <div class="control">
+              <input id="pages" class="input" type="text" placeholder="Enter No of Pages" />
+            </div>
+          </div>
+
+          <div class="control">
+            <label class="label">Have you read the book?</label>
+            <label class="radio">
+              <input type="radio" name="read" value="Yes">
+              Yes
+            </label>
+            <label class="radio">
+              <input type="radio" name="read" value="No">
+              No
+            </label>
+          </div>
+
+          
+
+          <!-- <input id="read" type="text" placeholder="Did you read the book?" /> -->
+          <button class="submitBookBtn button is-link mt-3" type="submit">Submit</button>
         </form>
       </div>
     </div>

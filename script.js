@@ -30,13 +30,22 @@ for (let i = 0; i < myLibrary.length; i++) {
 let newBook = document.getElementById('new-book');
 let author = document.getElementById('author');
 let pages = document.getElementById('pages');
-let read = document.getElementById('read');
+let read = document.getElementsByName('read');
+
+
 
 
 document.querySelector('form.new-book-form').addEventListener('submit', function (e) {
 
     //prevent the normal submission of the form
     e.preventDefault();
+
+    console.log(read[0].value, read[1].value);
+
+    for (i = 0; i < read.length; i++) {
+      if (read[i].checked)
+          read.value = read[i].value
+    }
     
     let book = document.createElement('li')
     let newBookObject = new Book(newBook.value, author.value, parseInt(pages.value), read.value)
