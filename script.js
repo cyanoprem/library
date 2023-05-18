@@ -1,3 +1,6 @@
+
+let myLibrary = []
+
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
@@ -5,27 +8,38 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
+function addBookToLibrary(book) {
+  myLibrary.push(book)
+}
 
-const book1 = new Book('Sales EQ', 'Jeb Blount', 288, 'Yes')
-const book2 = new Book('Hooked', 'Nir Eyal', 171, 'Yes')
-const book3 = new Book('Cloud Native Apps on GCP', 'Alasdair Gilchrist', 401, 'No')
+addBookToLibrary(new Book('Sales EQ', 'Jeb Blount', 288, 'Yes'))
+addBookToLibrary(new Book('Hooked', 'Nir Eyal', 171, 'Yes'))
+addBookToLibrary(new Book('Cloud Native Apps on GCP', 'Alasdair Gilchrist', 401, 'No'))
 
-let myLibrary = [book1, book2, book3]
+function loadBooks () {
+  const books = document.getElementById('books')
 
-const books = document.getElementById('books')
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = document.createElement('li')
 
-for (let i = 0; i < myLibrary.length; i++) {
-  let book = document.createElement('li')
-  book.innerHTML = `Title: ${myLibrary[i].title}, Author: ${myLibrary[i].author}, No of Pages: ${myLibrary[i].pages}, Read: ${myLibrary[i].read}`
-  book.classList.add('card', 'column', 'm-2')
-  books.appendChild(book)
-  let deleteButton = document.createElement("button")
-  deleteButton.appendChild(document.createTextNode("delete"))
-  book.appendChild(deleteButton)
-  deleteButton.onclick = function() {
-    this.parentElement.style.display = "none";
+    book.innerHTML = `Title: ${myLibrary[i].title}, Author: ${myLibrary[i].author}, No of Pages: ${myLibrary[i].pages}, Read: ${myLibrary[i].read}`
+
+    book.classList.add('card', 'column', 'm-2')
+    books.appendChild(book)
+
+    let deleteButton = document.createElement("button")
+    deleteButton.appendChild(document.createTextNode("delete"))
+    book.appendChild(deleteButton)
+
+    deleteButton.onclick = function() {
+      this.parentElement.style.display = "none";
+    }
   }
 }
+
+loadBooks()
+
+
 
 let newBook = document.getElementById('new-book');
 let author = document.getElementById('author');
@@ -40,25 +54,30 @@ document.querySelector('form.new-book-form').addEventListener('submit', function
     //prevent the normal submission of the form
     e.preventDefault();
 
-    console.log(read[0].value, read[1].value);
 
     for (i = 0; i < read.length; i++) {
       if (read[i].checked)
           read.value = read[i].value
     }
     
+    const books = document.getElementById('books')
     let book = document.createElement('li')
+
     let newBookObject = new Book(newBook.value, author.value, parseInt(pages.value), read.value)
-    myLibrary.push(newBookObject)
+    addBookToLibrary(newBookObject)
+
     book.innerHTML = `Title: ${newBook.value}, Author: ${author.value}, No of Pages: ${parseInt(pages.value)}, Read: ${read.value}`
+
     book.classList.add('card', 'column', 'm-2')
     books.appendChild(book)
+
     let deleteButton = document.createElement("button")
     deleteButton.appendChild(document.createTextNode("delete"))
     book.appendChild(deleteButton)
     deleteButton.onclick = function() {
       this.parentElement.style.display = "none";
     }
+
     document.querySelector('.new-book-form').reset()
     const modal = document.getElementById('modal-js-example')
     modal.classList.remove('is-active');
@@ -106,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (event) => {
     const e = event || window.event;
 
-    // if (e.keyCode === 27) { // Escape key
-    //   closeAllModals();
-    // }
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
   });
 });

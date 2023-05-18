@@ -11,6 +11,7 @@
 <body>
 
   <div id="container" class="ml-1 mr-1">
+
     <div id="header" class="box">
       <h1 id="heading" class="is-size-3 has-text-link has-text-weight-bold">Library</h1>
       <button id="add-new-btn" class="button is-link js-modal-trigger" data-target="modal-js-example">New Book</button>
@@ -18,6 +19,7 @@
 
     <ul id="books" class="columns is-multiline ml-1 mr-1">
     </ul>
+
   </div>
 
   <div id="modal-js-example" class="modal">
@@ -26,11 +28,8 @@
     <div class="modal-content">
       <div class="box">
         <p class="is-size-5 has-text-link mb-1">Add New Book</p>
+        
         <form class="new-book-form">
-
-          <!-- <input id="new-book" class="input" type="text" placeholder="Enter Book Name" /> -->
-          <!-- <input id="author" class="input" type="text" placeholder="Enter Author Name" /> -->
-          <!-- <input id="pages" class="input" type="text" placeholder="Enter No of Pages" /> -->
 
            <div class="field">
             <label class="label">Book Name</label>
@@ -45,7 +44,6 @@
               <input id="author" class="input" type="text" placeholder="Enter Author Name" />
             </div>
           </div>
-
           
           <div class="field">
             <label class="label">No of Pages</label>
@@ -66,11 +64,10 @@
             </label>
           </div>
 
-          
-
-          <!-- <input id="read" type="text" placeholder="Did you read the book?" /> -->
           <button class="submitBookBtn button is-link mt-3" type="submit">Submit</button>
+
         </form>
+        
       </div>
     </div>
   
