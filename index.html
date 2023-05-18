@@ -5,21 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Library</h1>
 
-  <form class="new-book-form">
-    <input id="new-book" type="text" placeholder="Enter New Book" />
-    <input id="author" type="text" placeholder="Enter Author Name" />
-    <input id="pages" type="text" placeholder="Enter No of Pages" />
-    <input id="read" type="text" placeholder="Did you read the book?" />
-    <button type="submit">Submit</button>
-  </form>
+  <div id="container" class="ml-1 mr-1">
+    <div id="header" class="box">
+      <h1 id="heading" class="is-size-3 has-text-link has-text-weight-bold">Library</h1>
+      <button id="add-new-btn" class="button is-link js-modal-trigger" data-target="modal-js-example">New Book</button>
+    </div>
 
-  <ul id="books">
-  </ul>
+    <ul id="books" class="columns is-multiline ml-1 mr-1">
+    </ul>
+  </div>
+
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <p>Add New Book</p>
+        <form class="new-book-form">
+          <input id="new-book" type="text" placeholder="Enter New Book" />
+          <input id="author" type="text" placeholder="Enter Author Name" />
+          <input id="pages" type="text" placeholder="Enter No of Pages" />
+          <input id="read" type="text" placeholder="Did you read the book?" />
+          <button class="submitBookBtn" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
