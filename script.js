@@ -37,10 +37,37 @@ function loadBooks () {
     pageNo.classList.add('content')
     book.appendChild(pageNo)
 
+    
+    let toggleButton = document.createElement('div')
     let didRead = document.createElement('div')
-    didRead.innerHTML = `Read: ${myLibrary[i].read}`
-    didRead.classList.add('content')
-    book.appendChild(didRead)
+    didRead.innerHTML = 'Read'
+    didRead.classList.add('content', 'pt-3', 'pr-2')
+    toggleButton.classList.add('buttons', 'has-addons')
+    toggleButton.appendChild(didRead)
+    let yesButton = document.createElement('button')
+    yesButton.appendChild(document.createTextNode("Yes"))
+    yesButton.classList.add('button')
+    let noButton = document.createElement('button')
+    noButton.appendChild(document.createTextNode("No"))
+    noButton.classList.add('button')
+    toggleButton.appendChild(yesButton)
+    toggleButton.appendChild(noButton)
+    if (myLibrary[i].read === 'Yes') {
+      yesButton.classList.add('is-link')
+    } else {
+      noButton.classList.add('is-link')
+    }
+    book.appendChild(toggleButton)
+
+    yesButton.onclick = function() {
+      yesButton.classList.add('is-link')
+      noButton.classList.remove('is-link')
+    }
+
+    noButton.onclick = function() {
+      noButton.classList.add('is-link')
+      yesButton.classList.remove('is-link')
+    }
 
 
     let column = document.createElement('div')
@@ -64,6 +91,10 @@ function loadBooks () {
 }
 
 loadBooks()
+
+// .changeReadStatus = function(status) {
+//   this.read = status
+// }
 
 
 
@@ -107,10 +138,36 @@ document.querySelector('form.new-book-form').addEventListener('submit', function
     pageNo.classList.add('content')
     book.appendChild(pageNo)
 
+    let toggleButton = document.createElement('div')
     let didRead = document.createElement('div')
-    didRead.innerHTML = `Read: ${read.value}`
-    didRead.classList.add('content')
-    book.appendChild(didRead)
+    didRead.innerHTML = 'Read'
+    didRead.classList.add('content', 'pt-3', 'pr-2')
+    toggleButton.classList.add('buttons', 'has-addons')
+    toggleButton.appendChild(didRead)
+    let yesButton = document.createElement('button')
+    yesButton.appendChild(document.createTextNode("Yes"))
+    yesButton.classList.add('button')
+    let noButton = document.createElement('button')
+    noButton.appendChild(document.createTextNode("No"))
+    noButton.classList.add('button')
+    toggleButton.appendChild(yesButton)
+    toggleButton.appendChild(noButton)
+    if (read.value === 'Yes') {
+      yesButton.classList.add('is-link')
+    } else {
+      noButton.classList.add('is-link')
+    }
+    book.appendChild(toggleButton)
+
+    yesButton.onclick = function() {
+      yesButton.classList.add('is-link')
+      noButton.classList.remove('is-link')
+    }
+
+    noButton.onclick = function() {
+      noButton.classList.add('is-link')
+      yesButton.classList.remove('is-link')
+    }
 
     let column = document.createElement('div')
     column.classList.add('column')
